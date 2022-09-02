@@ -1,0 +1,17 @@
+{
+	"name": "bulk load dim_call_center",
+	"properties": {
+		"content": {
+			"query": "--Uncomment the 4 lines below to create a stored procedure for data pipeline orchestration​\n--CREATE PROC bulk_load_dim_call_center\n--AS\n--BEGIN\nCOPY INTO tpcds.dim_call_center\n(cc_call_center_sk 1, cc_call_center_id 2, cc_rec_start_date 3, cc_rec_end_date 4, \ncc_closed_date_sk 5, cc_open_date_sk 6, cc_name 7, cc_class 8, cc_employees 9, \ncc_sq_ft 10, cc_hours 11, cc_manager 12, cc_mkt_id 13, cc_mkt_class 14, \ncc_mkt_desc 15, cc_market_manager 16, cc_division 17, cc_division_name 18, cc_company 19, \ncc_company_name 20, cc_street_number 21, cc_street_name 22, cc_street_type 23, cc_suite_number 24, \ncc_city 25, cc_county 26, cc_state 27, cc_zip 28, cc_country 29, cc_gmt_offset 30, cc_tax_percentage 31)\nFROM 'https://synapseintro002.dfs.core.windows.net/data/dwh-dataset/call_center.dat'\nWITH\n(\n\tFILE_TYPE = 'CSV'\n\t,MAXERRORS = 0\n\t,FIELDTERMINATOR = '|'\n\t,FIRSTROW = 1\n\t,ERRORFILE = 'https://synapseintro002.dfs.core.windows.net/_error_rows/'\n)\n--END\nGO\n\nSELECT TOP 100 * FROM tpcds.dim_call_center\nGO",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "dwh_work",
+				"poolName": "dwh_work"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

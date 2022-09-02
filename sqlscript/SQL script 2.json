@@ -1,0 +1,17 @@
+{
+	"name": "SQL script 2",
+	"properties": {
+		"content": {
+			"query": "--Uncomment the 4 lines below to create a stored procedure for data pipeline orchestration​\n--CREATE PROC bulk_load_dim_catalog_page\n--AS\n--BEGIN\nCOPY INTO tpcds.dim_catalog_page\n(cp_catalog_page_sk 1, cp_catalog_page_id 2, cp_start_date_sk 3, cp_end_date_sk 4, cp_department 5, cp_catalog_number 6,\n cp_catalog_page_number 7, cp_description 8, cp_type 9)\nFROM 'https://synapseintro002.dfs.core.windows.net/data/dwh-dataset/catalog_page.dat'\nWITH\n(\n\tFILE_TYPE = 'CSV'\n\t,MAXERRORS = 0\n\t,FIELDTERMINATOR = '|'\n\t,ERRORFILE = 'https://synapseintro002.dfs.core.windows.net/data/dwh-dataset/'\n)\n--END\nGO\n\nSELECT TOP 100 * FROM tpcds.dim_catalog_page\nGO",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "dwh_work",
+				"poolName": "dwh_work"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

@@ -1,0 +1,17 @@
+{
+	"name": "SQL script 3",
+	"properties": {
+		"content": {
+			"query": "--Uncomment the 4 lines below to create a stored procedure for data pipeline orchestration​\n--CREATE PROC bulk_load_fact_catalog_sales\n--AS\n--BEGIN\nCOPY INTO tpcds.fact_catalog_sales\n(cs_sold_date_sk 1, cs_sold_time_sk 2, cs_ship_date_sk 3, cs_bill_customer_sk 4, cs_bill_cdemo_sk 5, cs_bill_hdemo_sk 6,\n cs_bill_addr_sk 7, cs_ship_customer_sk 8, cs_ship_cdemo_sk 9, cs_ship_hdemo_sk 10, cs_ship_addr_sk 11, \n cs_call_center_sk 12, cs_catalog_page_sk 13, cs_ship_mode_sk 14, cs_warehouse_sk 15, cs_item_sk 16, cs_promo_sk 17, \n cs_order_number 18, cs_quantity 19, cs_wholesale_cost 20, cs_list_price 21, cs_sales_price 22, cs_ext_discount_amt 23, \n cs_ext_sales_price 24, cs_ext_wholesale_cost 25, cs_ext_list_price 26, cs_ext_tax 27, cs_coupon_amt 28, cs_ext_ship_cost 29, \n cs_net_paid 30, cs_net_paid_inc_tax 31, cs_net_paid_inc_ship 32, cs_net_paid_inc_ship_tax 33, cs_net_profit 34)\nFROM 'https://synapseintro002.dfs.core.windows.net/data/dwh-dataset/catalog_sales.dat'\nWITH\n(\n\tFILE_TYPE = 'CSV'\n\t,MAXERRORS = 0\n\t,FIELDTERMINATOR = '|'\n\t,ERRORFILE = 'https://synapseintro002.dfs.core.windows.net/data/'\n)\n--END\nGO\n\nSELECT TOP 100 * FROM tpcds.fact_catalog_sales\nGO",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "dwh_work",
+				"poolName": "dwh_work"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

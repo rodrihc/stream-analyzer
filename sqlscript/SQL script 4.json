@@ -1,0 +1,17 @@
+{
+	"name": "SQL script 4",
+	"properties": {
+		"content": {
+			"query": "SELECT TOP 100 * FROM tpcds.dim_customer\nGo",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "dwh_work",
+				"poolName": "dwh_work"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}
